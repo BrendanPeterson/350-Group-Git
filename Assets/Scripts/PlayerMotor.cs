@@ -15,11 +15,12 @@ public class PlayerMotor : MonoBehaviour {
     private float currentCameraRotationX = 0f;
     private Vector3 thrusterForce = Vector3.zero;
 
-
     [SerializeField]
     private float cameraRotationLimit = 90f;
 
     private Rigidbody rb;
+
+    public static bool walking = false;
 
     void Start()
     {
@@ -53,6 +54,11 @@ public class PlayerMotor : MonoBehaviour {
     void FixedUpdate()
     {
         PerformMovement();
+       
+    }
+
+    void Update()
+    {
         PerformRotation();
     }
 
@@ -63,7 +69,14 @@ public class PlayerMotor : MonoBehaviour {
         {
             //will stop the rigidbody if it collides with an object
             rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+            walking = true;
+            //Debug.Log("Motor Walking");
         }
+        else
+        {
+            walking = false;
+        }
+     
 
         if(thrusterForce != Vector3.zero)
         {

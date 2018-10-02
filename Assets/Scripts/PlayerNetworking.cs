@@ -37,7 +37,7 @@ public class PlayerNetworking : NetworkBehaviour {
 
             //Disable Player Graphics for local player
             //Recursively is a self referring method, careful not to get into an infinite loop
-            SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+           // SetLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
 
             //Create Player UI/Crosshair
             playerUIInstance = Instantiate(playerUIPrefab);
@@ -55,7 +55,7 @@ public class PlayerNetworking : NetworkBehaviour {
 
     }
 
-    void SetLayerRecursively(GameObject obj, int newLayer)
+   /* void SetLayerRecursively(GameObject obj, int newLayer)
     {
 
         obj.layer = newLayer;
@@ -65,7 +65,7 @@ public class PlayerNetworking : NetworkBehaviour {
             SetLayerRecursively(child.gameObject, newLayer);
         }
 
-    }
+    }*/
 
     //On start client is in network behaviour class
     //Called everytime a client is start up locally

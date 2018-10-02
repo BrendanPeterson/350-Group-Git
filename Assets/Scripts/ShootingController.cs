@@ -17,6 +17,8 @@ public class ShootingController : NetworkBehaviour {
     [SerializeField]
     private LayerMask mask;
 
+    public static bool shooting = false;
+
     
 
     //Called on Start
@@ -35,6 +37,7 @@ public class ShootingController : NetworkBehaviour {
     //Called every Frame
     void Update()
     {
+        //Debug.Log(shooting);
         currentWeapon = weaponManager.GetCurrentWeapon();
 
         if (PauseMenu.IsOn)
@@ -66,6 +69,7 @@ public class ShootingController : NetworkBehaviour {
             }else if (Input.GetButtonUp("Fire1"))
             {
                 CancelInvoke("Shoot");
+                shooting = false;
             }
         }
 
@@ -114,6 +118,7 @@ public class ShootingController : NetworkBehaviour {
     void Shoot()
     {
         //Debug.Log("SHOOT!");
+        shooting = true;
         if(!isLocalPlayer && !weaponManager.isReloading)
         {
             return;
@@ -127,7 +132,7 @@ public class ShootingController : NetworkBehaviour {
         }
 
         currentWeapon.ammo--;
-        Debug.Log("You have " + currentWeapon.ammo + " bullets left.");
+        //Debug.Log("You have " + currentWeapon.ammo + " bullets left.");
 
         //Local player is shooting call OnShoot function on server
         CmdOnShoot();
