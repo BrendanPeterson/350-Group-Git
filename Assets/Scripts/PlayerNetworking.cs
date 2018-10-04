@@ -2,7 +2,7 @@
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Player))]
-[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(PlayerController1))]
 public class PlayerNetworking : NetworkBehaviour {
 
     [SerializeField]
@@ -11,8 +11,8 @@ public class PlayerNetworking : NetworkBehaviour {
     [SerializeField]
     string remoteLayerName = "RemotePlayer";
 
-    [SerializeField]
-    string dontDrawLayerName = "DontDraw";
+    //[SerializeField]
+    //string dontDrawLayerName = "DontDraw";
 
     [SerializeField]
     GameObject playerGraphics;
@@ -47,7 +47,7 @@ public class PlayerNetworking : NetworkBehaviour {
             PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
             if (ui == null)
                 Debug.LogError("No PlayerUI Component on Player UI Prefab");
-            ui.SetController(GetComponent<PlayerController>());
+            ui.SetController(GetComponent<PlayerController1>());
 
             GetComponent<Player>().SetupPlayer();
 

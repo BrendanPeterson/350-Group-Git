@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour {
 
-    [SerializeField]
-    RectTransform thrusterFuelAmount;
+    //[SerializeField]
+   // RectTransform thrusterFuelAmount;
 
     [SerializeField]
     GameObject pauseMenu;
 
-    private PlayerController controller;
+    private PlayerController1 controller;
 
-    public void SetController(PlayerController _controller)
+    public void SetController(PlayerController1 _controller)
     {
         controller = _controller;
     }
@@ -23,7 +23,7 @@ public class PlayerUI : MonoBehaviour {
     }
     void Update()
     {
-        SetFuelAmount (controller.GetThrusterFuelAmount());  
+        //SetFuelAmount (controller.GetThrusterFuelAmount());  
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -37,8 +37,8 @@ public class PlayerUI : MonoBehaviour {
         PauseMenu.IsOn = pauseMenu.activeSelf;
     }
 
-    void SetFuelAmount(float _amount)
-    {
-        thrusterFuelAmount.localScale = new Vector3(1f, _amount, 1f);
-    }
+    //void SetFuelAmount(float _amount)
+    //{
+       // thrusterFuelAmount.localScale = new Vector3(1f, _amount, 1f);
+   // }
 }

@@ -80,7 +80,7 @@ public class PlayerMotor : MonoBehaviour {
 
         if(thrusterForce != Vector3.zero)
         {
-            rb.AddForce(thrusterForce * Time.fixedDeltaTime, ForceMode.Acceleration);
+            rb.AddForce(thrusterForce * Time.fixedDeltaTime, ForceMode.Impulse);
         }
     }
 
