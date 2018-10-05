@@ -5,8 +5,9 @@ using UnityEngine.Networking;
 
 public class AnimationController : NetworkBehaviour {
 
-    [SerializeField]
-    static Animator anim;
+    
+   // [SyncVar]
+    public Animator anim;
 
     // Use this for initialization
     void Start () {

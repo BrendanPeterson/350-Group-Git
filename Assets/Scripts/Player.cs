@@ -8,6 +8,8 @@ public class Player : NetworkBehaviour {
 
     [SyncVar]
     private bool _isDead = false;
+
+
     public bool isDead
     {
         get { return _isDead; }
@@ -38,7 +40,22 @@ public class Player : NetworkBehaviour {
 
     private bool firstSetup = true;
 
+    public override void OnStartLocalPlayer()
+    {
+        Renderer[] rens = GetComponentsInChildren<Renderer>();
+        foreach(Renderer ren in rens)
+        {
+            ren.enabled = false;
+        }
+        GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
+       
+    }
 
+    public override void PreStartClient()
+    {
+        GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
+        Debug.Log("SendAnimation");
+    }
     //called when player setup is ready
     public void SetupPlayer()
     {

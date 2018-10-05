@@ -23,7 +23,7 @@ public class PlayerNetworking : NetworkBehaviour {
     [HideInInspector]
     public GameObject playerUIInstance;
 
-
+    
     //Runs on start
     void Start()
     {
