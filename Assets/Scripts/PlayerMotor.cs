@@ -14,9 +14,10 @@ public class PlayerMotor : MonoBehaviour {
     private float cameraRotationX = 0f;
     private float currentCameraRotationX = 0f;
     private Vector3 thrusterForce = Vector3.zero;
+    private Animator anim;
 
     [SerializeField]
-    private float cameraRotationLimit = 90f;
+    private float cameraRotationLimit = 30f;
 
     private Rigidbody rb;
 
@@ -25,12 +26,15 @@ public class PlayerMotor : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     //Gets velocity from player controller and passes it in
     public void Move (Vector3 _velocity)
     {
         velocity = _velocity;
+        anim.SetFloat("moveZ", Input.GetAxis("Vertical"));
+        anim.SetFloat("moveX", Input.GetAxis("Horizontal"));
     }
 
     //Gets a rotation for the player
@@ -97,6 +101,7 @@ public class PlayerMotor : MonoBehaviour {
 
             //Apply rotation to transform of camera
             cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0, 0);
+            //Debug.Log(currentCameraRotationX);
         }
     }
 

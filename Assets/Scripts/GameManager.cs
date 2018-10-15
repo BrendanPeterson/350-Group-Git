@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager instance;
 
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        if (instance !=null)
+        if (instance != null)
         {
             Debug.LogError("More than one gameManager in scene.");
         }
@@ -20,10 +21,10 @@ public class GameManager : MonoBehaviour {
         {
             instance = this;
         }
-        
+
     }
 
-    public void SetSceneCameraActive (bool isActive)
+    public void SetSceneCameraActive(bool isActive)
     {
         if (sceneCamera == null)
             return;

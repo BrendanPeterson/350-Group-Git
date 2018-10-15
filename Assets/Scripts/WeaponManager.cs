@@ -17,6 +17,9 @@ public class WeaponManager : NetworkBehaviour {
     private WeaponGraphics currentGraphics;
 
     public bool isReloading = false;
+    public Transform lookPos;
+    private GameObject weaponIns;
+   
 
 
 	void Start ()
@@ -34,20 +37,38 @@ public class WeaponManager : NetworkBehaviour {
         return currentGraphics;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CheckWeaponGraphicsLocation();
+        }
+    }
+    void CheckWeaponGraphicsLocation()
+    {
+        Debug.Log(weaponIns.transform.position);
+    }
+
     void EquipWeapon (PlayerWeapon _weapon)
     {
 
         currentWeapon = _weapon;
+        Vector3 _initialTransform = (weaponHolder.transform.position + _weapon.graphics.transform.position);
+         weaponIns = (GameObject)Instantiate(_weapon.graphics, _initialTransform, transform.rotation);
+        //Debug.Log(_weapon.graphics.transform.position);
+       weaponIns.transform.SetParent(weaponHolder);
+        
+        Debug.Log(weaponIns.transform.position);
 
-        GameObject _weaponIns = (GameObject)Instantiate(_weapon.graphics, weaponHolder.position, weaponHolder.rotation);
-        _weaponIns.transform.SetParent(weaponHolder);
+        
 
-        currentGraphics = _weaponIns.GetComponent<WeaponGraphics>();
+
+        currentGraphics = weaponIns.GetComponent<WeaponGraphics>();
         if (currentGraphics == null)
-            Debug.LogError("Current weapon has no graphics!" + _weaponIns.name);
+            Debug.LogError("Current weapon has no graphics!" + weaponIns.name);
 
         if (isLocalPlayer)
-            Util.SetLayerRecursively(_weaponIns, LayerMask.NameToLayer(weaponLayerName));
+            Util.SetLayerRecursively(weaponIns, LayerMask.NameToLayer(weaponLayerName));
     }
 
     public void Reload()

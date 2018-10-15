@@ -40,16 +40,16 @@ public class Player : NetworkBehaviour {
 
     private bool firstSetup = true;
 
-    public override void OnStartLocalPlayer()
+    /*public override void OnStartLocalPlayer()
     {
         Renderer[] rens = GetComponentsInChildren<Renderer>();
         foreach(Renderer ren in rens)
         {
-            ren.enabled = false;
+           ren.enabled = false;
         }
         GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
        
-    }
+    }*/
 
     public override void PreStartClient()
     {
