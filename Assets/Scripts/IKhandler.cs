@@ -114,6 +114,7 @@ public class IKhandler : MonoBehaviour {
 
 
 
+
     }
 
     void OnAnimatorIK()
@@ -140,27 +141,23 @@ public class IKhandler : MonoBehaviour {
         anim.SetIKRotation(AvatarIKGoal.RightFoot, rFRot);*/
 
         //hands
-        anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, ikWeight);
-        anim.SetIKPositionWeight(AvatarIKGoal.RightHand, ikWeight);
-
-        anim.SetIKPosition(AvatarIKGoal.LeftHand, leftIKTarget.position) ;
-        anim.SetIKPosition(AvatarIKGoal.RightHand, rightIKTarget.position);
+        
 
        // Debug.DrawRay(anim.GetBoneTransform(HumanBodyBones.RightHand).position, rightIKTarget.position);
         //Debug.Log(anim.GetBoneTransform(HumanBodyBones.RightHand).position);
        // Debug.Log(rightIKTarget.position);
 
-        anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, ikWeight);
-        anim.SetIKRotationWeight(AvatarIKGoal.RightHand, ikWeight);
+       // anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, ikWeight);
+       //anim.SetIKRotationWeight(AvatarIKGoal.RightHand, ikWeight);
 
-        anim.SetIKRotation(AvatarIKGoal.LeftHand, leftIKTarget.rotation);
-        anim.SetIKRotation(AvatarIKGoal.RightHand, rightIKTarget.rotation);
+       // anim.SetIKRotation(AvatarIKGoal.LeftHand, leftIKTarget.rotation);
+        //anim.SetIKRotation(AvatarIKGoal.RightHand, rightIKTarget.rotation);
 
-        anim.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, ikWeight);
-        anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, ikWeight);
+        //anim.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, ikWeight);
+        //anim.SetIKHintPositionWeight(AvatarIKHint.RightElbow, ikWeight);
 
-        anim.SetIKHintPosition(AvatarIKHint.LeftElbow, hintLeft.position);
-        anim.SetIKHintPosition(AvatarIKHint.RightElbow, hintRight.position);
+        //anim.SetIKHintPosition(AvatarIKHint.LeftElbow, hintLeft.position);
+        //anim.SetIKHintPosition(AvatarIKHint.RightElbow, hintRight.position);
 
 
 

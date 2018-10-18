@@ -25,7 +25,9 @@ public class WeaponManager : NetworkBehaviour {
 	void Start ()
     {
         EquipWeapon(primaryWeapon);
-	}
+        lookPos = GetComponent<IKhandler>().lookPos;
+        weaponHolder.LookAt(lookPos);
+    }
 
     public PlayerWeapon GetCurrentWeapon ()
     {
@@ -43,6 +45,7 @@ public class WeaponManager : NetworkBehaviour {
         {
             CheckWeaponGraphicsLocation();
         }
+        weaponHolder.LookAt(lookPos);
     }
     void CheckWeaponGraphicsLocation()
     {
@@ -57,6 +60,8 @@ public class WeaponManager : NetworkBehaviour {
          weaponIns = (GameObject)Instantiate(_weapon.graphics, _initialTransform, transform.rotation);
         //Debug.Log(_weapon.graphics.transform.position);
        weaponIns.transform.SetParent(weaponHolder);
+       
+        
         
         Debug.Log(weaponIns.transform.position);
 
